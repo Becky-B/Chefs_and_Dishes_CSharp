@@ -1,0 +1,44 @@
+@model ChefsDishes.Models.Chef
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Add a Chef!</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <h1>Add a Chef!</h1>
+            </div>
+            <div class="col-sm-6 text-center">
+                <h4><a asp-action="Index">Home</a></h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form asp-action="AddChef" asp-controller="Home" method="post">
+            <div class="form-group">
+                <span class="text-danger" asp-validation-for="FirstName"></span>
+                <label asp-for="FirstName">First Name: </label>
+                <input type="text" asp-for="FirstName">
+            </div>
+                        <div class="form-group">
+                <span class="text-danger" asp-validation-for="LastName"></span>
+                <label asp-for="LastName">Last Name: </label>
+                <input type="text" asp-for="LastName">
+            </div>
+                        <div class="form-group">
+                <span class="text-danger" asp-validation-for="BDay"></span>
+                <label asp-for="BDay">Date of Birth: </label>
+                <input type="date" asp-for="BDay">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Your Chef!">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

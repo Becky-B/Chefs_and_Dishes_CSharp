@@ -1,0 +1,68 @@
+@model ChefsDishes.Models.DishWrapper
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Add a Dish!</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <h1>Add a Dish! Yum</h1>
+            </div>
+            <div class="col-sm-6 text-center">
+                <h4><a asp-action="dishes">Home</a></h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form asp-action="AddDish" asp-controller="Home" method="post">
+            <div class="form-group">
+                <span class="text-danger" asp-validation-for="FormModel.DishName"></span>
+                <label asp-for="FormModel.DishName">Dish Name: </label>
+                <input type="text" asp-for="FormModel.DishName">
+            </div>
+            <div class="form-group">
+                <span class="text-danger" asp-validation-for="FormModel.Calories"></span>
+                <label asp-for="FormModel.Calories"># of Calories: </label>
+                <input type="text" asp-for="FormModel.Calories">
+            </div>
+            <div class="form-group">
+                <span class="text-danger" asp-validation-for="FormModel.Tastiness"></span>
+                <label asp-for="FormModel.Tastiness">Tastiness: </label>
+                <select asp-for="FormModel.Tastiness">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="4">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <span class="text-danger" asp-validation-for="FormModel.ChefId"></span>
+                <label asp-for="FormModel.ChefId">Chef </label>
+                <select asp-for="FormModel.ChefId">
+                    @foreach (Chef chef in Model.AllChefs)
+                    {
+                    <option value="@chef.ChefId">@chef.FirstName @chef.LastName</option>
+
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <span class="text-danger" asp-validation-for="FormModel.Description"></span>
+                <label asp-for="FormModel.Description"></label>
+                <textarea asp-for="FormModel.Description" cols="50" Rows="10"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Your Dish!">
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>
